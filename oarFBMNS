@@ -1,0 +1,9 @@
+#!/bin/bash
+#OAR -l walltime=200:00:00
+#OAR -n FBMNS3D
+#OAR -t seq
+#OAR --stdout fbmns3d.out
+#OAR --stderr fbmns3d.err
+time ./fbmns3d
+
+
