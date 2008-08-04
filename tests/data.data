@@ -1,0 +1,15 @@
+ xxi        yyi        zzi        xl       yl     zl	switch (8Q1)
+-1.D0      -1.D0      -1.D0      2.D0     2.D0   2.D0     true
+ x=xi	x=xf	y=yi	y=yf	z=zi	z=zf (0-->Neuman, 1-->Dirichlet)
+  1	 1	 1	 1	 1	 0    VXXXXXX
+  1	 1	 1	 1	 1	 0    VYYYYYY
+  1	 1	 1	 1	 1	 0    VZZZZZZ
+  0	 0	 0	 0	 0	 1    Pression
+ itermaxV   itermax         prec
+  40  	       30    	    1.D-3
+ alpha 	 zeta    theta         epsilon(<=h^2)        r       np     nr
+  0.D0  -1.d-3    0.85D0          0.01d0            0.1D0    1      0
+   nu     	 dt           	itermax_tp
+  0.01D0  	0.03D0           10
+    ax            ay         az
+   0.d0          0.d0       0.d0
