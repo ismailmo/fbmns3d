@@ -166,7 +166,8 @@ c
 c
         write(9,*)'attribute ','"','element type','"',' string '
      > ,' "quads"'
-	write(9,*)'attribute ','"','ref','"',' string ','"','positions','"'
+	write(9,*)'attribute ','"','ref','"',' string ','"','positions',
+     >                                                               '"'
 	write(9,*)'object 3 class array type float rank 0  items '
 	write(9,*)nss,' data follows '
 c
@@ -174,7 +175,8 @@ c
 	   WRITE(9,*) P(i)
 	ENDDO
 c
-	write(9,*)'attribute ','"','dep','"',' string ','"','positions','"'
+	write(9,*)'attribute ','"','dep','"',' string ','"','positions',
+     >                                                               '"'
         write(9,*)'object ','"','irregular positions', 
      >                       ' irregular connections','"',' class field'
         write(9,*)'component ','"','positions','"',' value 1'
@@ -217,7 +219,8 @@ c
 c
         write(9,*)'attribute ','"','element type','"',' string '
      > ,' "quads"'
-	write(9,*)'attribute ','"','ref','"',' string ','"','positions','"'
+	write(9,*)'attribute ','"','ref','"',' string ','"','positions',
+     >                                                               '"'
 	write(9,*)'object 3 class array type float rank 0  items '
 	write(9,*)ncs,' data follows '
 c
@@ -225,7 +228,8 @@ c
 	   WRITE(9,*) P(i)
 	ENDDO
 c
-	write(9,*)'attribute ','"','dep','"',' string ','"','connections','"'
+	write(9,*)'attribute ','"','dep','"',' string ','"','connections'
+     >                                                              ,'"'
         write(9,*)'object ','"','irregular positions', 
      >                       ' irregular connections','"',' class field'
         write(9,*)'component ','"','positions','"',' value 1'
@@ -325,7 +329,8 @@ C
 	enddo
         write(4,*)'attribute ','"','element type','"',' string '
      > ,' "cubes"'
-	write(4,*)'attribute ','"','ref','"',' string ','"','positions','"'
+	write(4,*)'attribute ','"','ref','"',' string ','"','positions',
+     >                                                               '"'
 	write(4,*)'object 3 class array type float rank 0  items '
 	write(4,*)ns,' data follows '
 	DO k=1,nz
@@ -335,7 +340,8 @@ C
             enddo
          enddo
 	ENDDO
-	write(4,*)'attribute ','"','dep','"',' string ','"','positions','"'
+	write(4,*)'attribute ','"','dep','"',' string ','"','positions',
+     >                                                               '"'
         write(4,*)'object ','"','irregular positions', 
      >                       ' irregular connections','"',' class field'
         write(4,*)'component ','"','positions','"',' value 1'

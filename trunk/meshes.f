@@ -577,7 +577,6 @@ c
      >              (xc**2+yc**2)*(-r**2 - 2*(xc**2) - yc**2)/(r**2) -
      >              2*(xc**2)*(yc**2)/((r**2)*dsqrt(xden))
      >)/xden
-	    pause
 	      write(40,*) xc,yc,zc,norx(k),nory(k),norz(k)
 	   enddo
 	enddo
