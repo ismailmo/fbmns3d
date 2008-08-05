@@ -1,3 +1,22 @@
+c  This file is part of Fbmns3d
+c  Copyright (C) 2004 Mourad Ismail
+c
+c  Fbmns3d is free software; you can redistribute it and/or modify
+c  it under the terms of the GNU General Public License as published by
+c  the Free Software Foundation; either version 3 of the Licence, or 
+c  (at your option) any later version.
+c
+c  Fbmns3d is distributed in the hope that it will be useful,
+c  but WITHOUT ANY WARRANTY; without even the implied warranty of
+c  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+c  GNU General Public License for more details.
+c
+c  You should have received a copy of the GNU General Public License
+c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
+
+c Authors: Tuomo Rossi   (tro@math.jyu.fi),
+c          Jari Toivanen (tene@math.jyu.fi)
+
 C--------------------------------------------------------------------C
 C--------------------------ROUTINES----------------------------------C
 C--------------------------------------------------------------------C
