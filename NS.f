@@ -25,15 +25,15 @@ C{
 c
 c Parameters and data which user can define
 c
-      parameter (nmx=129,nmy=129,nmz=257)
+      parameter (nmx=160,nmy=160,nmz=400)
 c
       parameter (nxyz=19)   ! 2**q+1 ------> h=1/2**q
 !      parameter (px = 129, py = 129, pz = 129)
-      parameter (px = 33, py = 33, pz = 33)
+      parameter (px = 14, py = 17, pz = 33)
 !      parameter (px = 14, py = 17, pz = 19)
       parameter (nx = 2*px-1, ny = 2*py-1, nz = 2*pz-1, nn=30)
 !      parameter (nx = px, ny = py, nz = pz, nn=30)
-      parameter (npmax=70,nrmax=3) 
+      parameter (npmax=220,nrmax=3) 
 C     
       !parameter (ldw = 6*nlmax*(nx+ny) + max(9*nx,7*ny*nz) + max(9*ny,10*nz)) 
       parameter (nlmax=6 ,ldw = 6*nlmax*(nx+ny) + (7*ny*nz) +(10*nz))
