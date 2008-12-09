@@ -8,7 +8,7 @@
  itermaxV   itermax         prec
   140  	       120    	    5.D-2
  alpha 	 zeta    theta         epsilon(<=h^2)        r       np     nr
-  0.     -1.D-3    0.99D0          0.01d0            0.15D0  215      0
+  0.     -1.D-3    0.99D0          0.01d0            0.1D0  215      0
    nu     	 dt           	itermax_tp
   0.01D0  	0.03D0           2000
     ax            ay         az
