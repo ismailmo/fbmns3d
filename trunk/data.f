@@ -42,7 +42,7 @@ C
           PR0 (k,j,i)=0.d0
           V_x0(k,j,i)=0.d0
           V_Y0(k,j,i)=0.d0
-          V_Z0(k,j,i)=1.d0 !*(1.D0-x(i)**2)*(1.D0-y(j)**2)
+          V_Z0(k,j,i)=1.d0*(1.D0-x(i)**2)*(1.D0-y(j)**2)
 !               if (k.eq.1) then
 !                  V_Z0(k,j,i)=1.d0
 !               else
