@@ -589,6 +589,7 @@ c     calcul debit
          call DebitZ (2,nx,ny,nz,nc,nmx,nmy,nmz,hx,hy,hz,
      >      num,x,y,z,V_Z0,debitZF)
          write(33,*) debitZF
+         write(*,*) '---->Debit ', i_temps, ' ', debitZF
 
 c%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 c     DO i=1,npt                  !%%
