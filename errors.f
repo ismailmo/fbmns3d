@@ -96,34 +96,84 @@ c
       errquad=0.D0 ;  errquadloc=0.D0 ; errquadfatloc=0.D0
 c
       do k=1,nc
-c
-       call Coord (num(k),nx,ny,ix,iy,iz)
+c     
+         call Coord (num(k),nx,ny,ix,iy,iz)
 
-       xmin=x(ix(1)) ; xmax=x(ix(7))
-       ymin=y(iy(1)) ; ymax=y(iy(7))
-       zmin=z(iz(1)) ; zmax=z(iz(7))
-
-       call Quad_coord(n,xmin,xmax,ymin,ymax,zmin,zmax,
-     >                      rt,rt2,w0,w1,w2,dx,dy,dz,a,b,c)
-       call Input_func(d,n,nmx,nmy,nmz,r,x,y,z,ix,iy,iz,a,b,c,
-     >                      U,ga)
+         xmin=x(ix(1)) ; xmax=x(ix(7))
+         ymin=y(iy(1)) ; ymax=y(iy(7))
+         zmin=z(iz(1)) ; zmax=z(iz(7))
+         
+         call Quad_coord(n,xmin,xmax,ymin,ymax,zmin,zmax,
+     >        rt,rt2,w0,w1,w2,dx,dy,dz,a,b,c)
+         call Input_func(d,n,nmx,nmy,nmz,r,x,y,z,ix,iy,iz,a,b,c,
+     >        U,ga)
 c
-       integ=integ_QN(n,dx,dy,dz,w0,w1,w2,ga)
-       errquad=errquad+integ
+         integ=integ_QN(n,dx,dy,dz,w0,w1,w2,ga)
+         errquad=errquad+integ
 c
-       !square of the distance between (0,0,0) and the cube center
-       rho=0.0625d0*( (a(1)+a(2)+a(n-1)+a(n))**2 +
-     >                (b(1)+b(2)+b(n-1)+b(n))**2 +
-     >                (c(1)+c(2)+c(n-1)+c(n))**2   )
-c
-       if(rho.gt.R4)then
-        errquadfatloc=errquadfatloc+integ
-        errquadloc=errquadloc+integ
-       elseif(rho.gt.R3)then
-         errquadloc=errquadloc+integ
-       endif
-c
+!square of the distance between (0,0,0) and the cube center
+         rho=0.0625d0*( (a(1)+a(2)+a(n-1)+a(n))**2 +
+     >        (b(1)+b(2)+b(n-1)+b(n))**2 +
+     >        (c(1)+c(2)+c(n-1)+c(n))**2   )
+c     
+         if(rho.gt.R4)then
+            errquadfatloc=errquadfatloc+integ
+            errquadloc=errquadloc+integ
+         elseif(rho.gt.R3)then
+            errquadloc=errquadloc+integ
+         endif
+c     
       enddo
+c     
+      return
+      end
+C======================================================================C
+calcul debit a la sortie du tube, dans la direction des z
+      Subroutine DebitZ (n,nx,ny,nz,nc,nmx,nmy,nmz,hx,hy,hz,
+     >      num,x,y,z,U,debit)
+C======================================================================C
+      implicit none
+      integer nmx,nmy,nmz,nx,ny,nz,nc,i,j,k,l,n,inddep
+      integer ix(8),iy(8),iz(8),num(*)
+      double precision interpol_Q1_X,interpol_Q1_Y,interpol_Q1_Z
+      double precision pi,r2,r3,beta,xmax,xmin,ymin,ymax,zmin,zmax
+      double precision dxk,dyk,dzk,duex_x,duex_y,duex_z,hx,hy,hz,r4
+      double precision rt,rt2,w0,w1,w2,dx,dy,dz,a(5),b(5),c(5)
+      double precision u(nmz,nmy,nmx),ga(5,5,5),x(*),y(*),z(*),integ
+      double precision interpol_Q1,integ_QNZF,debit
 c
+
+      debit=0.D0 
+
+      inddep = (nx-1)*(ny-1)*(nz-2)+1 ! indice depart derniere couche
+                                              ! dans la direction Z
+      do k=inddep,nc
+         call Coord (num(k),nx,ny,ix,iy,iz)
+c
+         xmin=x(ix(1)) ; xmax=x(ix(7))
+         ymin=y(iy(1)) ; ymax=y(iy(7))
+         zmin=z(iz(1)) ; zmax=z(iz(7))
+c
+         call Quad_coord(n,xmin,xmax,ymin,ymax,zmin,zmax,
+     >        rt,rt2,w0,w1,w2,dx,dy,dz,a,b,c)
+         
+         ! nous sommes sur la face z=zf
+         do i=1,5
+            c(i) = z(nz)
+         enddo
+
+         do l=1,n
+            do j=1,n
+               do i=1,n
+                  ga(i,j,l)=
+     >         interpol_Q1(nmx,nmy,nmz,ix,iy,iz,a(i),b(j),c(l),x,y,z,U)
+               enddo
+            enddo
+         enddo
+
+         integ=integ_QNZF(n,dx,dy,dz,w0,w1,w2,ga)
+         debit = debit + integ
+      enddo
+
       return
       end

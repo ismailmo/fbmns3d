@@ -33,7 +33,7 @@ c
 !      parameter (px = 14, py = 17, pz = 19)
       parameter (nx = 2*px-1, ny = 2*py-1, nz = 2*pz-1, nn=30)
 !      parameter (nx = px, ny = py, nz = pz, nn=30)
-      parameter (npmax=220,nrmax=3) 
+      parameter (npmax=560,nrmax=3) 
 C     
       !parameter (ldw = 6*nlmax*(nx+ny) + max(9*nx,7*ny*nz) + max(9*ny,10*nz)) 
       parameter (nlmax=6 ,ldw = 6*nlmax*(nx+ny) + (7*ny*nz) +(10*nz))
@@ -94,7 +94,7 @@ c
       double precision PRF(nmz,nmy,nmx)
       double precision bx(-1:100),by(-1:100),bz(-1:100)
       doubleprecision  Integ_GPX,Integ_GPY,Integ_GPZ,Pinter(2*nptmax)
-      doubleprecision PinterS(2*nss)
+      doubleprecision PinterS(2*nss),debitZF
       integer ptsForce(ncs)
       data vfn,cfn,xfn/'Vof_Vel.000','Vof_Coo.000','DX__V_X.000'/
       data yfn,zfn/'DX__V_Y.000','DX__V_Z.000'/
@@ -583,7 +583,13 @@ C
          print*, '###################################################'
 C     
          call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,f0,V_Z0) 
-c     
+
+c     calcul debit
+         ! toto debit ??????????????
+         call DebitZ (2,nx,ny,nz,nc,nmx,nmy,nmz,hx,hy,hz,
+     >      num,x,y,z,V_Z0,debitZF)
+         write(33,*) debitZF
+
 c%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 c     DO i=1,npt                  !%%
 c     DnVdiff(i)= 0.d0            !%%

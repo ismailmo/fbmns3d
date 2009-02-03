@@ -70,6 +70,29 @@ C
       end do
       print*, 'done'
       print*, ' '
+
+C
+      print*, 'Writing in file computed_2D_Z.mtv ...'
+      OPEN (UNIT=32,FILE='computed_2D_Z.mtv',STATUS='UNKNOWN')
+      WRITE(32,*)'$DATA = CONTOUR'
+      WRITE(32,*)'%meshplot = off'
+      WRITE(32,*)'%contstyle=2'
+      WRITE(32,*)'%xmin =', xi,' xmax=', xi+xl
+      WRITE(32,*)'%ymin =', yi,' ymax=', yi+yl
+      WRITE(32,*)'%nx =  ',nx
+      WRITE(32,*)'%ny =  ',ny
+      WRITE(32,*)'%nsteps =',50
+
+      do j=1,ny
+         do i=1,nx
+            write(32,*) f(nz,j,i)
+         end do
+      end do
+      
+      print*, 'done'
+      print*, ' '
+
+
 C
 !      print*, 'Writing in file computed_3D.mtv ...'
 !      OPEN (UNIT=3,FILE='computed_3D.mtv',STATUS='UNKNOWN')

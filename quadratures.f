@@ -295,3 +295,43 @@ cc
 c
       return
       end
+
+c========================================================================c
+c     integration sur les quads de z=zf pour le clacul du debit
+      Function Integ_QNZF(n,dx,dy,dz,w0,w1,w2,ga)
+c========================================================================c
+c
+      implicit none
+      integer n,i,j,k,l
+      double precision w0,w1,w2,dx,dy,dz,integ_QNZF
+      double precision ga(5,5,5)
+c     
+      if (n.eq.2) then
+c     
+c------------------------------------------------------------------------------c
+c     Formule de quadrature de Gauss-Legendre a 8 points: 2 points dans 
+c     dans chaque direction. Exacte pour les polynomes de degres 3 par
+c     rapport a chacune des variables
+c     par exple l'integrale par rapport a x es donnee par:
+c     integ=dx*(ga(x1,y,z)+ga(x2,y,z))
+c------------------------------------------------------------------------------c
+c
+         integ_QNZF=
+     >   dx*(
+     >        (dy*( ga(1,1,2)+ga(1,2,2) ))
+     >                                    +
+     >        (dy*( ga(2,1,2)+ga(2,2,2) ))
+     >       )         
+c     
+        else
+          print*,' '
+          print*,'ABORTING.......'
+          print*,'Error:',n,'= quadature points number not implemented'
+          print*,'n must be 2'
+          print*,' '
+          stop
+cc
+       endif
+c
+       return
+       end
