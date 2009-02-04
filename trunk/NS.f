@@ -29,7 +29,7 @@ c
 c
       parameter (nxyz=19)   ! 2**q+1 ------> h=1/2**q
 !      parameter (px = 129, py = 129, pz = 129)
-      parameter (px = 39, py = 39, pz = 149)
+      parameter (px = 19, py = 19, pz = 74)
 !      parameter (px = 14, py = 17, pz = 19)
       parameter (nx = 2*px-1, ny = 2*py-1, nz = 2*pz-1, nn=30)
 !      parameter (nx = px, ny = py, nz = pz, nn=30)
