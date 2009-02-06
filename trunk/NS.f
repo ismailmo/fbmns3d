@@ -29,7 +29,7 @@ c
 c
       parameter (nxyz=19)   ! 2**q+1 ------> h=1/2**q
 !      parameter (px = 129, py = 129, pz = 129)
-      parameter (px = 39, py = 39, pz = 79)
+      parameter (px = 78, py = 78, pz = 78)
 !      parameter (px = 14, py = 17, pz = 19)
       parameter (nx = 2*px-1, ny = 2*py-1, nz = 2*pz-1, nn=30)
 !      parameter (nx = px, ny = py, nz = pz, nn=30)
@@ -800,18 +800,18 @@ c%%%%%%%%%%%%
 c     call View_gradient (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
 c     > xi,yi,zi,xl,yl,zl,x,y,z,UC_x,UC_y,UC_z)
          if (i_temps.eq.1.or.mod(i_temps,2).eq.0) then
-!            call Vof (nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,
-!     >           vfn,cfn,x,y,z,UC_x,UC_Z)
+            call Vof (nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,
+     >           vfn,cfn,x,y,z,UC_x,UC_Z)
 c      call Visu_DX (0,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,vfn,
 c     >            x,y,z,g)
-!            call Visu_DX (1,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,xfn,
-!     >           x,y,z,UC_X)
-!            call Visu_DX (2,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,yfn,
-!     >           x,y,z,UC_Y)
-!            call Visu_DX (3,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,zfn,
-!     >           x,y,z,UC_Z)
-!            call Visu_DX (4,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,pfn,
-!     >           x,y,z,PR1)
+            call Visu_DX (1,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,xfn,
+     >           x,y,z,UC_X)
+            call Visu_DX (2,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,yfn,
+     >           x,y,z,UC_Y)
+            call Visu_DX (3,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,zfn,
+     >           x,y,z,UC_Z)
+            call Visu_DX (4,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,pfn,
+     >           x,y,z,PR1)
          endif  
 c      call Visu_DX (0,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,pfn,
 c     >            x,y,z,PR1)

@@ -173,11 +173,11 @@ c$$$         EndDo
             do i=1,nx
 !               u(k,j,i)=1.d0*(x(i)**2-1.d0)*(y(j)**2-1.d0)
 !          u(k,j,i)=16.d0*x(i)*(1.D0-x(i))*y(j)*(1.D0-y(j))
-               if (k.eq.1) then
+!               if (k.eq.1) then
                   u(k,j,i)=1.d0
-               else
-                  u(k,j,i)=0.d0
-               endif
+ !              else
+!                  u(k,j,i)=0.d0
+!               endif
             EndDo
          EndDo
       endDo
