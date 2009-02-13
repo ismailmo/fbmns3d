@@ -799,7 +799,7 @@ c%%%%%%%%%%%%
      >        xi,yi,zi,xl,yl,zl,g,U)
 c     call View_gradient (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
 c     > xi,yi,zi,xl,yl,zl,x,y,z,UC_x,UC_y,UC_z)
-         if (i_temps.eq.1.or.mod(i_temps,10).eq.0) then
+         if (i_temps.eq.1.or.mod(i_temps,2).eq.0) then
             call Vof (nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,
      >           vfn,cfn,x,y,z,UC_x,UC_Z)
 c      call Visu_DX (0,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,vfn,
