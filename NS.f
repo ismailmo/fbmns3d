@@ -219,7 +219,7 @@ c     2nd mbre sans C.L
          call AssembleDXPv (2,nx,ny,nz,nc,nmx,nmy,nmz,-dt,            
      >        x,y,z,num,bcVX,PR1,g)
          cpu = Time_Cpu() - cpu !27!
-         print*, 'prodmu assembleDxPv --->' , cpu !27!
+         print*, 'prodmu assembleDxPv time --->' , cpu !27!
 C     
 C------------------Debut de l'algo du pt fixe-------------------------------C
 C     
