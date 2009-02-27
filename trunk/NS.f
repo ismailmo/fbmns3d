@@ -588,8 +588,8 @@ c     calcul debit
          ! toto debit ??????????????
          call DebitZ (2,nx,ny,nz,nc,nmx,nmy,nmz,hx,hy,hz,
      >      num,x,y,z,V_Z0,debitZF)
-         write(33,*) debitZF
-         write(*,*) '---->Debit ', i_temps, ' ', debitZF
+!27!         write(33,*) debitZF
+!27!         write(*,*) '---->Debit ', i_temps, ' ', debitZF
 
 c%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 c     DO i=1,npt                  !%%
@@ -761,22 +761,22 @@ c%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             end do
          end do
 c%%%%%%%%%%%%
-         WRITE(35,*)'$DATA = CONTOUR'
-         WRITE(35,*)'%meshplot = off'
-         WRITE(35,*)'%contstyle=2'
-         WRITE(35,*)'%xmin =', xi,' xmax=', xi+xl
-         WRITE(35,*)'%ymin =', zi,' ymax=', zi+zl
-         WRITE(35,*)'%nx =  ',nx
-         WRITE(35,*)'%ny =  ',nz
-         WRITE(35,*)'%nsteps =',50
-         
-         do k=1,nz
-            do j=ny/2,ny/2
-               do i=1,nx
-                  write(35,*) PR1(k,j,i)
-               enddo
-            enddo
-         enddo
+!27!         WRITE(35,*)'$DATA = CONTOUR'
+!27!         WRITE(35,*)'%meshplot = off'
+!27!         WRITE(35,*)'%contstyle=2'
+!27!         WRITE(35,*)'%xmin =', xi,' xmax=', xi+xl
+!27!         WRITE(35,*)'%ymin =', zi,' ymax=', zi+zl
+!27!         WRITE(35,*)'%nx =  ',nx
+!27!         WRITE(35,*)'%ny =  ',nz
+!27!         WRITE(35,*)'%nsteps =',50
+!27!         
+!27!         do k=1,nz
+!27!            do j=ny/2,ny/2
+!27!               do i=1,nx
+!27!                  write(35,*) PR1(k,j,i)
+!27!               enddo
+!27!            enddo
+!27!         enddo
 c%%%%%%%%%%%%
          do kc=1,nz
             do jc=1,ny
@@ -795,24 +795,24 @@ c%%%%%%%%%%%%
             enddo
          enddo
 c%%%%%%%%%%%%
-         call Visu_mtv (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
-     >        xi,yi,zi,xl,yl,zl,g,U)
+!27!         call Visu_mtv (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
+!27!     >        xi,yi,zi,xl,yl,zl,g,U)
 c     call View_gradient (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
 c     > xi,yi,zi,xl,yl,zl,x,y,z,UC_x,UC_y,UC_z)
-         if (i_temps.eq.1.or.mod(i_temps,2).eq.0) then
-            call Vof (nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,
-     >           vfn,cfn,x,y,z,UC_x,UC_Z)
+!27!         if (i_temps.eq.1.or.mod(i_temps,2).eq.0) then
+!27!            call Vof (nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,
+!27!     >           vfn,cfn,x,y,z,UC_x,UC_Z)
 c      call Visu_DX (0,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,vfn,
 c     >            x,y,z,g)
-            call Visu_DX (1,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,xfn,
-     >           x,y,z,UC_X)
-            call Visu_DX (2,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,yfn,
-     >           x,y,z,UC_Y)
-            call Visu_DX (3,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,zfn,
-     >           x,y,z,UC_Z)
-            call Visu_DX (4,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,pfn,
-     >           x,y,z,PR1)
-         endif  
+!27!            call Visu_DX (1,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,xfn,
+!27!     >           x,y,z,UC_X)
+!27!            call Visu_DX (2,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,yfn,
+!27!     >           x,y,z,UC_Y)
+!27!            call Visu_DX (3,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,zfn,
+!27!     >           x,y,z,UC_Z)
+!27!            call Visu_DX (4,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,pfn,
+!27!     >           x,y,z,PR1)
+!27!         endif  
 c      call Visu_DX (0,nx,ny,nz,nmx,nmy,nmz,ns,nc,num,i_temps,pfn,
 c     >            x,y,z,PR1)
 C     
@@ -836,17 +836,17 @@ c     write(38,*)i_temps,az(1)
             call Integ_GP(ncs, area, nums, SS, R, Pinter,
      >           Integ_GPX,Integ_GPY,Integ_GPZ)
             
-            write(36,*)i_temps,
-     >           -Integ_GPX , nu*Integ_G(ncs, area, DnVX)
-            write(37,*)i_temps,
-     >           -Integ_GPY , nu*Integ_G(ncs, area, DnVY)
-            write(38,*)i_temps,
-     >           -Integ_GPZ , nu*Integ_G(ncs, area, DnVZ)
-            write(39,*)i_temps,dsqrt(
-     >        (-Integ_GPX + nu*Integ_G(ncs, area, DnVX))**2 +
-     >        (-Integ_GPY + nu*Integ_G(ncs, area, DnVY))**2 +    
-     >        (-Integ_GPZ + nu*Integ_G(ncs, area, DnVZ))**2
-     >                              )
+!27!            write(36,*)i_temps,
+!27!     >           -Integ_GPX , nu*Integ_G(ncs, area, DnVX)
+!27!            write(37,*)i_temps,
+!27!     >           -Integ_GPY , nu*Integ_G(ncs, area, DnVY)
+!27!            write(38,*)i_temps,
+!27!     >           -Integ_GPZ , nu*Integ_G(ncs, area, DnVZ)
+!27!            write(39,*)i_temps,dsqrt(
+!27!     >        (-Integ_GPX + nu*Integ_G(ncs, area, DnVX))**2 +
+!27!     >        (-Integ_GPY + nu*Integ_G(ncs, area, DnVY))**2 +    
+!27!     >        (-Integ_GPZ + nu*Integ_G(ncs, area, DnVZ))**2
+!27!     >                              )
           endif
       END DO                    ! Time iteration
 !%%%%%%%%
