@@ -134,7 +134,7 @@ c     Calcul des aires des elements de gamma
          call  area_spherical_quads (ncs,nums,SS,R,area)
 c     CALL Surface_Gamma (ncs,nss,NUMS,SS,Area)
 c     Localisation des sommets de gamma dans le maillage global
-         cpu = Time_Cpu() - cpu !27!
+         cpu = Time_Cpu()  !27!
          CALL Locate_G_Gp(nx,ny,nz,hx,hy,hz,xi,yi,zi,ncs,nss,
      >        nums,R,SS,nrep)
       call LocateSG(nx,ny,nz,hx,hy,hz,xi,yi,zi,nss,
@@ -183,7 +183,7 @@ c
 c     update U_n (u_n=f qui vient d'etre calculer a l'iteration precedente)
 c     terme de convection
 c     U_conv=U_n(X-dt*velocity)
-         cpu = Time_Cpu() - cpu !27!
+         cpu = Time_Cpu()  !27!
          call charact_Vect (nx,ny,nz,nmx,nmy,nmz,xi,yi,zi,xl,yl,zl,
      >        hx,hy,hz,dt,x,y,z,num,V_x0,V_y0,V_z0,UC_x,UC_y,UC_z)
          cpu = Time_Cpu() - cpu !27!
@@ -195,7 +195,7 @@ c
 C     
          beta=dt*nu
 C     
-         cpu = Time_Cpu() - cpu !27!
+         cpu = Time_Cpu()  !27!
 c     calcul des matrices beta*A et M
          call mkdmt3d(nx,ny,nz,hx,hy,hz,bcVX,beta,
      >        a1 ,b1 ,c1 ,d1 ,a2 ,b2 ,c2 ,d2 ,a3 ,b3 ,c3 ,d3 )
@@ -204,7 +204,7 @@ c     calcul des matrices beta*A et M
          cpu = Time_Cpu() - cpu !27!
          print*,'RHS time --- ', cpu !27!
 C     
-         cpu = Time_Cpu() - cpu !27!
+         cpu = Time_Cpu()  !27!
 c     u_n= la matrice de masse X U_conv
          Call Prod_MU (nx,ny,nz,c1,d1,c2,d2,c3,d3,
      >        uo,nmy,nmz,UC_x,nmy,nmz) 
@@ -236,7 +236,7 @@ c
          endif
 C     
          if (dbcX.ne.0) then
-            cpu = Time_Cpu() - cpu !27!
+            cpu = Time_Cpu()  !27!
 c     Dirichlet Boundary conditions
             call Dirich_B_C(.false.,1,nx_fdX,ny_fdX,nz_fdX,nx,ny,nz,
      >           nmx,nmy,nmz,1.d0,i_temps,dt,R,bcVX,a1,b1,c1,d1,a2,b2,
@@ -337,7 +337,7 @@ C
 C     
 !--------------------VYYYYYYYYYYYYYYYYYYYYYYY-------------------------------
 C   
-         cpu = Time_Cpu() - cpu !27!  
+         cpu = Time_Cpu()  !27!  
 c     calcul des matrices beta*A et M
          call mkdmt3d(nx,ny,nz,hx,hy,hz,bcVY,beta,
      >        a1 ,b1 ,c1 ,d1 ,a2 ,b2 ,c2 ,d2 ,a3 ,b3 ,c3 ,d3 )
@@ -350,7 +350,7 @@ c     update U_n (u_n=f qui vient d'etre calculer a l'iteration precedente)
 c     terme de convection
 c     U_conv=U_n(X-dt*velocity)
 c     u_n= la matrice de masse X U_conv
-         cpu = Time_Cpu() - cpu !27!
+         cpu = Time_Cpu()  !27!
          Call Prod_MU (nx,ny,nz,c1,d1,c2,d2,c3,d3,
      >        uo,nmy,nmz,UC_y,nmy,nmz) 
 c     2nd mbre sans C.L
@@ -382,7 +382,7 @@ c
 c     
          if (dbcY.ne.0) then
 c     Dirichlet Boundary conditions
-            cpu = Time_Cpu() - cpu !27!
+            cpu = Time_Cpu()  !27!
             call Dirich_B_C(.false.,2,nx_fdY,ny_fdY,nz_fdY,nx,ny,nz,
      >           nmx,nmy,nmz,1.d0,i_temps,dt,R,bcVY,a1,b1,c1,d1,a2,b2,
      >           c2,d2,a3,b3,c3,d3,x,y,z,uo,UC_y,g)
@@ -402,7 +402,7 @@ c
             else
                call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,g,f0)
             endif
-            cpu = Time_Cpu() - cpu !27!
+            cpu = Time_Cpu()  !27!
 c     
             call dcq3d(nx_fdY,ny_fdY,nz_fdY,f0,nmy,nmz,a1,b1,c1,d1,
      &           a2,b2,c2,d2,a3,b3,c3,d3,1.d0,dw,ldw,iw,liw,.true.,ierr)
@@ -410,7 +410,7 @@ c     Solve the given problem with the subroutine dcq3d.
             call dcq3d(nx_fdY,ny_fdY,nz_fdY,f0,nmy,nmz,a1,b1,c1,d1,
      &           a2,b2,c2,d2,a3,b3,c3,d3,1.d0,dw,ldw,iw,liw,.false.,
      &           ierr)
-            cpu = Time_Cpu() - cpu
+            cpu = Time_Cpu() 
             print*, 'laplacian resolution time --- ', cpu !27!
             stop !27!
             if (ierr.ne.0) then
