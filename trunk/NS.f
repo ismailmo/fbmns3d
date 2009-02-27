@@ -876,7 +876,7 @@ c      if (np.ne.0) call view_sphere (np,ncs,SS,ax,ay,az,nums)
 !??????????
             call INTERPOL_S(np,ncs,nss,nx,ny,nz,nmx,nmy,nmz,hx,hy,hz,R,
      >             nrepS,num,nums,ax,ay,az,x,y,z,SS,pr1,PinterS)
-            call sphere4D (nss,ncs,SS,ax,ay,az,nums,PinterS)
+!27!            call sphere4D (nss,ncs,SS,ax,ay,az,nums,PinterS)
 !??????????
 C-------------------fin des iterations en temps------------------------------C
 C     
