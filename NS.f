@@ -158,9 +158,9 @@ c
          enddo
       enddo
 c------------------------Iterations en temps------------------------------C
-      print*,'================================'
-      print*,' starting time  iterations....  '
-      print*,'================================'
+!27!      print*,'================================'
+!27!      print*,' starting time  iterations....  '
+!27!      print*,'================================'
 c     
 c     bx(-1)=0.;by(-1)=0.;bz(-1)=0.
 c     bx(0)=ax(1);by(0)=ay(1);bz(0)=az(1)
@@ -183,9 +183,9 @@ c     U_conv=U_n(X-dt*velocity)
          call charact_Vect (nx,ny,nz,nmx,nmy,nmz,xi,yi,zi,xl,yl,zl,
      >        hx,hy,hz,dt,x,y,z,num,V_x0,V_y0,V_z0,UC_x,UC_y,UC_z)
 c     
-         print*,'-----------------------------------------------'
-         print*,' Computing the V_XXXXXX at time', i_temps,'x',dt,' ...'
-         print*,'-----------------------------------------------'
+!27!         print*,'-----------------------------------------------'
+!27!         print*,' Computing the V_XXXXXX at time', i_temps,'x',dt,' ...'
+!27!         print*,'-----------------------------------------------'
 C     
          beta=dt*nu
 C     
@@ -205,9 +205,9 @@ c     2nd mbre sans C.L
 C     
 C------------------Debut de l'algo du pt fixe-------------------------------C
 C     
-         print*,' '
-         print*, 'starting the  fix point iterations for V_XXXXXX....'
-         print*,' '
+!27!         print*,' '
+!27!         print*, 'starting the  fix point iterations for V_XXXXXX....'
+!27!         print*,' '
 c     
          if (np.ne.0) then
             do k=1,nz
@@ -273,42 +273,42 @@ c
                DnVX0(i)   =DnVX(i)
             ENDDO
             normeDnV=dsqrt(prodsca(npt,DnVdiff,DnVdiff)) !/theta
-            print*,'*  Norme DiffDnv =',normeDnV
-            if(mod(ii,10).eq.0) then
-               print*, '  '
-               print*, '***********************************************'
-               print*,'*',ii,' fix point iteration for XXX-Velocity'
-               print*,'* DnV(ncs/2) on sphere number 1 =',DnVX(nshow)
-               print*,'* Uinter(ncs/2) on sphere number 1 =',
-     >              Uinter(nshow)
-               print*,'* Uinter(2ncs+ncs/2) on sphere number 2 =',
-     >              Uinter(nshow2)
-               print*,'* Norme DiffDnv =',normeDnV
-               print*, '***********************************************'
-               print*, '  '
-            endif
+!27!            print*,'*  Norme DiffDnv =',normeDnV
+!27!            if(mod(ii,10).eq.0) then
+!27!               print*, '  '
+!27!               print*, '***********************************************'
+!27!               print*,'*',ii,' fix point iteration for XXX-Velocity'
+!27!               print*,'* DnV(ncs/2) on sphere number 1 =',DnVX(nshow)
+!27!               print*,'* Uinter(ncs/2) on sphere number 1 =',
+!27!     >              Uinter(nshow)
+!27!               print*,'* Uinter(2ncs+ncs/2) on sphere number 2 =',
+!27!     >              Uinter(nshow2)
+!27!               print*,'* Norme DiffDnv =',normeDnV
+!27!               print*, '***********************************************'
+!27!               print*, '  '
+!27!            endif
             if(normeDnV.le.prec) goto 234
 C     
          ENDDO                  ! point fix iteration on V_XXX
 C     
-         print*, ' '
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, '!!*           VELOCITY_XXX               *!!'
-         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
-         print*, '!!*           VELOCITY_XXX               *!!'
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, ' '
+!27!         print*, ' '
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, '!!*           VELOCITY_XXX               *!!'
+!27!         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
+!27!         print*, '!!*           VELOCITY_XXX               *!!'
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, ' '
 C     
 C------------------Fin de l'algo du pt fixe-------------------------------C
 C     
  234     print*, '###################################################' 
-         print*, '# V_XXX COMPUTING at time',i_temps,'x',dt,'...done' 
-         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
-         print*, '# NORM =',normeDnV
-         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
-         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
-     >        Uinter(nshow2)
-         print*, '###################################################'
+!27!         print*, '# V_XXX COMPUTING at time',i_temps,'x',dt,'...done' 
+!27!         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
+!27!         print*, '# NORM =',normeDnV
+!27!         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
+!27!         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
+!27!     >        Uinter(nshow2)
+!27!         print*, '###################################################'
 c     
          call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,f0,V_X0) 
 C     
@@ -341,9 +341,9 @@ c     2nd mbre sans C.L
 C     
 C------------------Debut de l'algo du pt fixe-------------------------------C
 C     
-         print*,' '
-         print*, 'starting the  fix point iterations for V_YYYYYY....'
-         print*,' '
+!27!         print*,' '
+!27!         print*, 'starting the  fix point iterations for V_YYYYYY....'
+!27!         print*,' '
 c     
          if (np.ne.0) then
             do k=1,nz
@@ -409,41 +409,41 @@ c
                DnVY0(i)   =DnVY(i)
             ENDDO
             normeDnV=dsqrt(prodsca(npt,DnVdiff,DnVdiff)) !/theta
-            print*,'*  Norme DiffDnv =',normeDnV
-            if(mod(ii,10).eq.0) then
-               print*, '  '
-               print*, '***********************************************'
-               print*,'*',ii,' fix point iteration for YYY-Velocity'
-               print*,'* DnV(ncs/2) on sphere number 1 =',DnVY(nshow)
-               print*,'* Uinter(ncs/2) on sphere number 1 =',
-     >              Uinter(nshow)
-               print*,'* Uinter(2ncs+ncs/2) on sphere number 2 =',
-     >              Uinter(nshow2)
-               print*,'* Norme DiffDnv =',normeDnV
-               print*, '***********************************************'
-               print*, '  '
-            endif
+!27!            print*,'*  Norme DiffDnv =',normeDnV
+!27!            if(mod(ii,10).eq.0) then
+!27!               print*, '  '
+!27!               print*, '***********************************************'
+!27!               print*,'*',ii,' fix point iteration for YYY-Velocity'
+!27!               print*,'* DnV(ncs/2) on sphere number 1 =',DnVY(nshow)
+!27!               print*,'* Uinter(ncs/2) on sphere number 1 =',
+!27!     >              Uinter(nshow)
+!27!               print*,'* Uinter(2ncs+ncs/2) on sphere number 2 =',
+!27!     >              Uinter(nshow2)
+!27!               print*,'* Norme DiffDnv =',normeDnV
+!27!               print*, '***********************************************'
+!27!               print*, '  '
+!27!            endif
             if(normeDnV.le.prec) goto 235
 c     
          ENDDO                  ! point fix iteration on V_YYY
 c     
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, '!!*           VELOCITY_YYY               *!!'
-         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
-         print*, '!!*           VELOCITY_YYY               *!!'
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, ' '
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, '!!*           VELOCITY_YYY               *!!'
+!27!         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
+!27!         print*, '!!*           VELOCITY_YYY               *!!'
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, ' '
 C     
 C------------------Fin de l'algo du pt fixe-------------------------------C
 C     
  235     print*, '###################################################' 
-         print*, '# V_YYY COMPUTING at time',i_temps,'x',dt,'...done' 
-         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
-         print*, '# NORM =',normeDnV
-         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
-         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
-     >        Uinter(nshow2)
-         print*, '###################################################'
+!27!         print*, '# V_YYY COMPUTING at time',i_temps,'x',dt,'...done' 
+!27!         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
+!27!         print*, '# NORM =',normeDnV
+!27!         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
+!27!         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
+!27!     >        Uinter(nshow2)
+!27!         print*, '###################################################'
 c     
          call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,f0,V_Y0) 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -473,9 +473,9 @@ c     2nd mbre sans C.L
          call AssembleDZPv (2,nx,ny,nz,nc,nmx,nmy,nmz,-dt,
      >        x,y,z,num,bcVZ,PR1,g)
 C     
-         print*,' '
-         print*, 'starting the  fix point iterations for V_ZZZZZZ....'
-         print*,' '
+!27!         print*,' '
+!27!         print*, 'starting the  fix point iterations for V_ZZZZZZ....'
+!27!         print*,' '
 c     
          if (np.ne.0) then
             do k=1,nz
@@ -545,42 +545,42 @@ c
                DnVZ0(i)   =DnVZ(i)
             ENDDO
             normeDnV=dsqrt(prodsca(npt,DnVdiff,DnVdiff)) !/theta
-            print*,'*  Norme DiffDnv =',normeDnV
-            if(mod(ii,10).eq.0) then
-               print*, '  '
-               print*, '***********************************************'
-               print*,'*',ii,' fix point iteration for ZZZ-Velocity'
-               print*,'* DnV(ncs/2) on sphere number 1 =',DnVZ(nshow)
-               print*,'* Uinter(ncs/2) on sphere number 1 =',
-     >              Uinter(nshow)
-               print*,'* Uinter(2ncs+ncs/2) on sphere number 2 =',
-     >              Uinter(nshow2)
-               print*,'* Norme DiffDnv =',normeDnV
-               print*, '***********************************************'
-               print*, '  '       
-            endif
+!27!            print*,'*  Norme DiffDnv =',normeDnV
+!27!            if(mod(ii,10).eq.0) then
+!27!               print*, '  '
+!27!               print*, '***********************************************'
+!27!               print*,'*',ii,' fix point iteration for ZZZ-Velocity'
+!27!               print*,'* DnV(ncs/2) on sphere number 1 =',DnVZ(nshow)
+!27!               print*,'* Uinter(ncs/2) on sphere number 1 =',
+!27!     >              Uinter(nshow)
+!27!               print*,'* Uinter(2ncs+ncs/2) on sphere number 2 =',
+!27!     >              Uinter(nshow2)
+!27!               print*,'* Norme DiffDnv =',normeDnV
+!27!               print*, '***********************************************'
+!27!               print*, '  '       
+!27!            endif
             if(normeDnV.le.prec) goto 236
 C     
          ENDDO                  ! point fix iteration on V_ZZZ
 C     
-         print*, ' '
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, '!!*           VELOCITY_ZZZ               *!!'
-         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
-         print*, '!!*           VELOCITY_ZZZ               *!!'
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, ' '
+!27!         print*, ' '
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, '!!*           VELOCITY_ZZZ               *!!'
+!27!         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
+!27!         print*, '!!*           VELOCITY_ZZZ               *!!'
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, ' '
 C     
 C------------------Fin de l'algo du pt fixe-------------------------------C
 C     
  236     print*, '###################################################' 
-         print*, '# V_ZZZ COMPUTING at time',i_temps,'x',dt,'...done' 
-         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
-         print*, '# NORM =',normeDnV
-         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
-         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
-     >        Uinter(nshow2)
-         print*, '###################################################'
+!27!         print*, '# V_ZZZ COMPUTING at time',i_temps,'x',dt,'...done' 
+!27!         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
+!27!         print*, '# NORM =',normeDnV
+!27!         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
+!27!         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
+!27!     >        Uinter(nshow2)
+!27!         print*, '###################################################'
 C     
          call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,f0,V_Z0) 
 
@@ -603,9 +603,9 @@ c     C-------------------------------------------------------------------------
 c     C------------------------Computing the PRESSURE---------------------------C
 c     C-------------------------------------------------------------------------C
 C     
-         print*,'----------------------------------------------'
-         print*,' Computing the Pressure at time', i_temps,'x',dt,' ...'
-         print*,'----------------------------------------------'
+!27!         print*,'----------------------------------------------'
+!27!         print*,' Computing the Pressure at time', i_temps,'x',dt,' ...'
+!27!         print*,'----------------------------------------------'
 c     calcul des matrices 1*A et M
          call mkdmt3d(px,py,pz,hpx,hpy,hpz,bcP,1.D0,
      >        a1 ,b1 ,c1 ,d1 ,a2 ,b2 ,c2 ,d2 ,a3 ,b3 ,c3 ,d3 )
@@ -690,39 +690,39 @@ c
             enddo
             normeDnV=dsqrt(prodsca_3d(nmx,nmy,nmz,px,py,pz,u1,u1))
 c     
-            print*,'*  Norm Diff =',normeDnV
+!27!            print*,'*  Norm Diff =',normeDnV
 c     
             call Update (px,py,pz,nmx,nmy,nmz,0.d0,1.d0,f,uo)
 c     
-            if(mod(ii,10).eq.0) then
-               print*, '  '
-               print*, '***********************************************'
-               print*,'*',ii,' fix point iteration for --PRESSURE--'
-               print*,'*  u(n/2)  =',f(nshowv,nshowv,nshowv)
-               print*,'*  Norm Diff =',normeDnV
-               print*, '***********************************************'
-               print*, '  '
-            endif
+!27!            if(mod(ii,10).eq.0) then
+!27!               print*, '  '
+!27!               print*, '***********************************************'
+!27!               print*,'*',ii,' fix point iteration for --PRESSURE--'
+!27!               print*,'*  u(n/2)  =',f(nshowv,nshowv,nshowv)
+!27!               print*,'*  Norm Diff =',normeDnV
+!27!               print*, '***********************************************'
+!27!               print*, '  '
+!27!            endif
             if(normeDnV.le.prec) goto 244
 c     
          ENDDO                  ! point fix iteration on pressure
 c     
-         print*, ' '
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, '!!*            PRESSURE                  *!!'
-         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
-         print*, '!!*            PRESSURE                  *!!'
-         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
-         print*, ' '
+!27!         print*, ' '
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, '!!*            PRESSURE                  *!!'
+!27!         PRINT*, '!!* MAXIMAL ITERATION NUMBER IS REACHED  *!!'
+!27!         print*, '!!*            PRESSURE                  *!!'
+!27!         print*, '!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!*!!'
+!27!         print*, ' '
 C----------------FIN des Iterations de l'algo du point fixe---------C
 C     
  244     print*, '###################################################' 
-         print*, '# PRESSURE COMPUTING at time',i_temps,'x',dt,
-     >        ' ...done' 
+!27!         print*, '# PRESSURE COMPUTING at time',i_temps,'x',dt,
+!27!     >        ' ...done' 
 c         '
-         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
-         print*, '# NORM =',normeDnV
-         print*, '###################################################'
+!27!         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
+!27!         print*, '# NORM =',normeDnV
+!27!         print*, '###################################################'
 c     
          if(switch) then
             call PROJECT_GF (nx,ny,nz,px,py,pz,nmx,nmy,nmz,numP,
@@ -850,12 +850,12 @@ c     write(38,*)i_temps,az(1)
           endif
       END DO                    ! Time iteration
 !%%%%%%%%
-      print*, 2.d0*r/nu,dsqrt(
-     >        (-Integ_GPX + nu*Integ_G(ncs, area, DnVX))**2 +
-     >        (-Integ_GPY + nu*Integ_G(ncs, area, DnVY))**2 +    
-     >        (-Integ_GPZ + nu*Integ_G(ncs, area, DnVZ))**2
-     >                              )
-      print*, Integ_GPX,Integ_GPY,Integ_GPZ
+!27!      print*, 2.d0*r/nu,dsqrt(
+!27!     >        (-Integ_GPX + nu*Integ_G(ncs, area, DnVX))**2 +
+!27!     >        (-Integ_GPY + nu*Integ_G(ncs, area, DnVY))**2 +    
+!27!     >        (-Integ_GPZ + nu*Integ_G(ncs, area, DnVZ))**2
+!27!     >                              )
+!27!      print*, Integ_GPX,Integ_GPY,Integ_GPZ
 !%%%%%%%%
       cpu = Time_Cpu() - cpu
 c     
