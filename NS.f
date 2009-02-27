@@ -389,7 +389,6 @@ c     Solve the given problem with the subroutine dcq3d.
             call dcq3d(nx_fdY,ny_fdY,nz_fdY,f0,nmy,nmz,a1,b1,c1,d1,
      &           a2,b2,c2,d2,a3,b3,c3,d3,1.d0,dw,ldw,iw,liw,.false.,
      &           ierr)
-            cpu = Time_Cpu() 
             if (ierr.ne.0) then
                print *, 'Error no ', ierr, ' in solution'
                stop
