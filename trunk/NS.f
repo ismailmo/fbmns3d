@@ -109,7 +109,7 @@ C
       pi=dacos(-1.d0) ; i_temps=0 ; nshowv=(nx/2) ;  nshow=(ncs/2)
       nshow2=2*ncs+(ncs/2)
 c     
-c     cpu = Time_Cpu() 
+      cpu = Time_Cpu()
 c     
       CALL DATA_AND_GEOM(ncs,npt,np,nr,R,epsilon,theta,alpha,nu,
      >     zeta,dt,itermaxP,itermax,itermax_tp,prec,xi,yi,zi,xl,yl,zl,
@@ -127,6 +127,9 @@ c     Maillages de OMEGA, gamma et omega
       CALL MSH_OMG (px,py,pz,hpx,hpy,hpz,hpv,xi,yi,zi,xl,yl,zl,
      >     xp,yp,zp,NumP)  
 c     
+      cpu = Time_Cpu() - cpu !27!
+      print*, 'meshing time --- >', cpu
+
       if (np.ne.0) then
          call MSH_sphere (nn,nss,ncs,r,SS,NUMS)      
          CALL MSH_omega  (nss,ncs,epsilon,r,nums,SS)
@@ -145,6 +148,7 @@ c     Localisation des sommets de gamma dans le maillage global
 !     >                    nums,R,SS,ptsForce)
       endif
 c     
+      cpu = Time_Cpu() !27!
       Call Initial  (nx,ny,nz,nmx,nmy,nmz,npt,
      >     R,x,y,z,DnVX,DnVX0,Uinter,f0,V_X0,V_Y0,V_Z0,PR0)
       do i=1,npt
@@ -160,6 +164,8 @@ c
             enddo
          enddo
       enddo
+      cpu = Time_Cpu() - cpu !27!
+      print*, 'initialisation time --- >', cpu
 c------------------------Iterations en temps------------------------------C
 !27!      print*,'================================'
 !27!      print*,' starting time  iterations....  '
@@ -258,12 +264,18 @@ c
                call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,g,f0)
             endif
 c     
+            cpu = Time_Cpu() !27!
             call dcq3d(nx_fdX,ny_fdX,nz_fdX,f0,nmy,nmz,a1,b1,c1,d1,
      &           a2,b2,c2,d2,a3,b3,c3,d3,1.d0,dw,ldw,iw,liw,.true.,ierr)
 c     Solve the given problem with the subroutine dcq3d.
             call dcq3d(nx_fdX,ny_fdX,nz_fdX,f0,nmy,nmz,a1,b1,c1,d1,
      &           a2,b2,c2,d2,a3,b3,c3,d3,1.d0,dw,ldw,iw,liw,.false.,
      &           ierr) 
+            cpu = Time_Cpu() - cpu !27!
+            print*, 'laplacian time --- >', cpu !27!
+            print*, 'YEP XXX'
+            stop !27!
+
             if (ierr.ne.0) then
                print *, 'Error no ', ierr, ' in solution'
                stop
