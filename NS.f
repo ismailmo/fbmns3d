@@ -261,7 +261,10 @@ c
      >              R,nrep,num,nums,bcVX,ax,ay,az,SS,x,y,z,Area,DnVX,g,
      >              F0)
             else
+               cpu = Time_Cpu() !27!
                call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,g,f0)
+               cpu = Time_Cpu() - cpu !27!
+               print*, 'update time ---> ', cpu
             endif
 c     
             cpu = Time_Cpu() !27!
@@ -274,7 +277,7 @@ c     Solve the given problem with the subroutine dcq3d.
             cpu = Time_Cpu() - cpu !27!
             print*, 'laplacian time --- >', cpu !27!
             print*, 'YEP XXX'
-            stop !27!
+            stop !27! YEP YEP YEP YEP
 
             if (ierr.ne.0) then
                print *, 'Error no ', ierr, ' in solution'
