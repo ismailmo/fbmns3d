@@ -208,9 +208,9 @@ c etape couteuse;;;;;
 C     
 C------------------Debut de l'algo du pt fixe-------------------------------C
 C     
-!27!         print*,' '
-!27!         print*, 'starting the  fix point iterations for V_XXXXXX....'
-!27!         print*,' '
+         print*,' '
+         print*, 'starting the  fix point iterations for V_XXXXXX....'
+         print*,' '
 c     
          if (np.ne.0) then
             do k=1,nz
@@ -306,13 +306,13 @@ C
 C------------------Fin de l'algo du pt fixe-------------------------------C
 C     
  234     print*, '###################################################' 
-!27!         print*, '# V_XXX COMPUTING at time',i_temps,'x',dt,'...done' 
-!27!         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
-!27!         print*, '# NORM =',normeDnV
-!27!         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
-!27!         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
-!27!     >        Uinter(nshow2)
-!27!         print*, '###################################################'
+         print*, '# V_XXX COMPUTING at time',i_temps,'x',dt,'...done' 
+         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
+         print*, '# NORM =',normeDnV
+         print*, '#Uinter(ncs/2) on sphere number 1 =',Uinter(nshow)
+         print*, '#Uinter(2ncs+ncs/2) on sphere number 2 =',
+     >        Uinter(nshow2)
+         print*, '###################################################'
 c     
          call Update (nx,ny,nz,nmx,nmy,nmz,0.d0,1.d0,f0,V_X0) 
 C     
@@ -607,9 +607,9 @@ c     C-------------------------------------------------------------------------
 c     C------------------------Computing the PRESSURE---------------------------C
 c     C-------------------------------------------------------------------------C
 C     
-!27!         print*,'----------------------------------------------'
-!27!         print*,' Computing the Pressure at time', i_temps,'x',dt,' ...'
-!27!         print*,'----------------------------------------------'
+         print*,'----------------------------------------------'
+         print*,' Computing the Pressure at time', i_temps,'x',dt,' ...'
+         print*,'----------------------------------------------'
 c     calcul des matrices 1*A et M
          call mkdmt3d(px,py,pz,hpx,hpy,hpz,bcP,1.D0,
      >        a1 ,b1 ,c1 ,d1 ,a2 ,b2 ,c2 ,d2 ,a3 ,b3 ,c3 ,d3 )
@@ -721,12 +721,12 @@ c
 C----------------FIN des Iterations de l'algo du point fixe---------C
 C     
  244     print*, '###################################################' 
-!27!         print*, '# PRESSURE COMPUTING at time',i_temps,'x',dt,
-!27!     >        ' ...done' 
+         print*, '# PRESSURE COMPUTING at time',i_temps,'x',dt,
+     >        ' ...done' 
 c         '
-!27!         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
-!27!         print*, '# NORM =',normeDnV
-!27!         print*, '###################################################'
+         print*, '# EXIT AFTER',ii,' ITERATIONS OF FIX POINT ALGORITHM'
+         print*, '# NORM =',normeDnV
+         print*, '###################################################'
 c     
          if(switch) then
             call PROJECT_GF (nx,ny,nz,px,py,pz,nmx,nmy,nmz,numP,
