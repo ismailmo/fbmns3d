@@ -134,10 +134,13 @@ c     Calcul des aires des elements de gamma
          call  area_spherical_quads (ncs,nums,SS,R,area)
 c     CALL Surface_Gamma (ncs,nss,NUMS,SS,Area)
 c     Localisation des sommets de gamma dans le maillage global
+         cpu = Time_Cpu() - cpu !27!
          CALL Locate_G_Gp(nx,ny,nz,hx,hy,hz,xi,yi,zi,ncs,nss,
      >        nums,R,SS,nrep)
       call LocateSG(nx,ny,nz,hx,hy,hz,xi,yi,zi,nss,
      >                    SS,nreps)
+      cpu = Time_Cpu() - cpu    !27!
+      print*, 'locate time ---- ' , cpu !27!
 !         call ptsForceLocate(nx,ny,nz,hx,hy,hz,xi,yi,zi,ncs,nss,
 !     >                    nums,R,SS,ptsForce)
       endif
@@ -180,8 +183,11 @@ c
 c     update U_n (u_n=f qui vient d'etre calculer a l'iteration precedente)
 c     terme de convection
 c     U_conv=U_n(X-dt*velocity)
+         cpu = Time_Cpu() - cpu !27!
          call charact_Vect (nx,ny,nz,nmx,nmy,nmz,xi,yi,zi,xl,yl,zl,
      >        hx,hy,hz,dt,x,y,z,num,V_x0,V_y0,V_z0,UC_x,UC_y,UC_z)
+         cpu = Time_Cpu() - cpu !27!
+         print*, 'convect time ----> ', cpu !27!
 c     
 !27!         print*,'-----------------------------------------------'
 !27!         print*,' Computing the V_XXXXXX at time', i_temps,'x',dt,' ...'
@@ -189,12 +195,16 @@ c
 C     
          beta=dt*nu
 C     
+         cpu = Time_Cpu() - cpu !27!
 c     calcul des matrices beta*A et M
          call mkdmt3d(nx,ny,nz,hx,hy,hz,bcVX,beta,
      >        a1 ,b1 ,c1 ,d1 ,a2 ,b2 ,c2 ,d2 ,a3 ,b3 ,c3 ,d3 )
          call right_side(.false.,1,nx,ny,nz,nmx,nmy,nmz,np,dt,i_temps,
      >        nu,R,x,y,z,ax,ay,az,rho,c1,d1,c2,d2,c3,d3,uo,g)
+         cpu = Time_Cpu() - cpu !27!
+         print*,'RHS time --- ', cpu !27!
 C     
+         cpu = Time_Cpu() - cpu !27!
 c     u_n= la matrice de masse X U_conv
          Call Prod_MU (nx,ny,nz,c1,d1,c2,d2,c3,d3,
      >        uo,nmy,nmz,UC_x,nmy,nmz) 
@@ -202,6 +212,8 @@ c     2nd mbre sans C.L
          call Update (nx,ny,nz,nmx,nmy,nmz,dt,1.d0,Uo,g)
          call AssembleDXPv (2,nx,ny,nz,nc,nmx,nmy,nmz,-dt,            
      >        x,y,z,num,bcVX,PR1,g)
+         cpu = Time_Cpu() - cpu !27!
+         print*, 'prodmu assembleDxPv --->' , cpu !27!
 C     
 C------------------Debut de l'algo du pt fixe-------------------------------C
 C     
@@ -224,10 +236,13 @@ c
          endif
 C     
          if (dbcX.ne.0) then
+            cpu = Time_Cpu() - cpu !27!
 c     Dirichlet Boundary conditions
             call Dirich_B_C(.false.,1,nx_fdX,ny_fdX,nz_fdX,nx,ny,nz,
      >           nmx,nmy,nmz,1.d0,i_temps,dt,R,bcVX,a1,b1,c1,d1,a2,b2,
      >           c2,d2,a3,b3,c3,d3,x,y,z,uo,UC_x,g)
+            cpu = Time_Cpu() - cpu !27!
+            print*, 'DBC time --- ', cpu
          endif
 c     
          DO ii=1,itermax        ! point fix iteration on V_XXX
@@ -321,23 +336,29 @@ C
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 C     
 !--------------------VYYYYYYYYYYYYYYYYYYYYYYY-------------------------------
-C     
+C   
+         cpu = Time_Cpu() - cpu !27!  
 c     calcul des matrices beta*A et M
          call mkdmt3d(nx,ny,nz,hx,hy,hz,bcVY,beta,
      >        a1 ,b1 ,c1 ,d1 ,a2 ,b2 ,c2 ,d2 ,a3 ,b3 ,c3 ,d3 )
          call right_side(.false.,2,nx,ny,nz,nmx,nmy,nmz,np,dt,i_temps,
      >        nu,R,x,y,z,ax,ay,az,rho,c1,d1,c2,d2,c3,d3,uo,g)
+         cpu = Time_Cpu() - cpu !27!
+         print*, 'RHS time ---- ', cpu !27!
 C     
 c     update U_n (u_n=f qui vient d'etre calculer a l'iteration precedente)
 c     terme de convection
 c     U_conv=U_n(X-dt*velocity)
 c     u_n= la matrice de masse X U_conv
+         cpu = Time_Cpu() - cpu !27!
          Call Prod_MU (nx,ny,nz,c1,d1,c2,d2,c3,d3,
      >        uo,nmy,nmz,UC_y,nmy,nmz) 
 c     2nd mbre sans C.L
          call Update (nx,ny,nz,nmx,nmy,nmz,dt,1.d0,Uo,g)
          call AssembleDYPv (2,nx,ny,nz,nc,nmx,nmy,nmz,-dt,
      >        x,y,z,num,bcVY,PR1,g)
+         cpu = Time_Cpu() - cpu !27!
+         print*, 'ProdMu et assemble DyPv time --- ', cpu !27!
 C     
 C------------------Debut de l'algo du pt fixe-------------------------------C
 C     
@@ -361,9 +382,12 @@ c
 c     
          if (dbcY.ne.0) then
 c     Dirichlet Boundary conditions
+            cpu = Time_Cpu() - cpu !27!
             call Dirich_B_C(.false.,2,nx_fdY,ny_fdY,nz_fdY,nx,ny,nz,
      >           nmx,nmy,nmz,1.d0,i_temps,dt,R,bcVY,a1,b1,c1,d1,a2,b2,
      >           c2,d2,a3,b3,c3,d3,x,y,z,uo,UC_y,g)
+            cpu = Time_Cpu() - cpu !27!
+            print*, 'DBC time ----', cpu !27!
          endif
 c     
          DO ii=1,itermax        ! point fix iteration on V_YYY
@@ -387,7 +411,7 @@ c     Solve the given problem with the subroutine dcq3d.
      &           a2,b2,c2,d2,a3,b3,c3,d3,1.d0,dw,ldw,iw,liw,.false.,
      &           ierr)
             cpu = Time_Cpu() - cpu
-            print*, 'Time laplacian--- ', cpu !27!
+            print*, 'laplacian resolution time --- ', cpu !27!
             stop !27!
             if (ierr.ne.0) then
                print *, 'Error no ', ierr, ' in solution'
