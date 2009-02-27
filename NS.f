@@ -388,7 +388,7 @@ c     Solve the given problem with the subroutine dcq3d.
      &           ierr)
             cpu = Time_Cpu() - cpu
             print*, 'Time laplacian--- ', cpu !27!
-            exit !27!
+            stop !27!
             if (ierr.ne.0) then
                print *, 'Error no ', ierr, ' in solution'
                stop
