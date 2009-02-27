@@ -799,8 +799,8 @@ c%%%%%%%%%%%%
             enddo
          enddo
 c%%%%%%%%%%%%
-!27!         call Visu_mtv (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
-!27!     >        xi,yi,zi,xl,yl,zl,g,U)
+         call Visu_mtv (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
+     >        xi,yi,zi,xl,yl,zl,g,U)
 c     call View_gradient (nx,ny,nz,nmx,nmy,nmz,i_temps,dt,
 c     > xi,yi,zi,xl,yl,zl,x,y,z,UC_x,UC_y,UC_z)
 !27!         if (i_temps.eq.1.or.mod(i_temps,2).eq.0) then
