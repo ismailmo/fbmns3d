@@ -1,4 +1,4 @@
-c  This file is part of Fbmns3d
+c  This file is part of Fbmns3d.
 c  Copyright (C) 2004 Mourad Ismail
 c
 c  Fbmns3d is free software; you can redistribute it and/or modify
