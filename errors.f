@@ -15,6 +15,7 @@ c  You should have received a copy of the GNU General Public License
 c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
 c
 c Author : Mourad Ismail   (ismail@ujf-grenoble.fr)
+c $Id$
 C======================================================================C
       Function L_inf_error_fd (nx_fd,ny_fd,nz_fd,nmx,nmy,nmz,bc,f,U)
 C======================================================================C
