@@ -15,7 +15,8 @@ c  You should have received a copy of the GNU General Public License
 c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
 c
 c Author : Mourad Ismail   (ismail@ujf-grenoble.fr)
-c
+c $Id$
+
       program FBM_Navier_Stokes
 C{
       implicit none
@@ -29,8 +30,8 @@ c
 c
       parameter (nxyz=19)   ! 2**q+1 ------> h=1/2**q
 !      parameter (px = 129, py = 129, pz = 129)
-      parameter (px = 78, py = 78, pz = 78)
-!      parameter (px = 14, py = 17, pz = 19)
+!      parameter (px = 78, py = 78, pz = 78)
+      parameter (px = 14, py = 17, pz = 19)
       parameter (nx = 2*px-1, ny = 2*py-1, nz = 2*pz-1, nn=30)
 !      parameter (nx = px, ny = py, nz = pz, nn=30)
       parameter (npmax=56,nrmax=3) 
@@ -765,22 +766,22 @@ c%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             end do
          end do
 c%%%%%%%%%%%%
-!27!         WRITE(35,*)'$DATA = CONTOUR'
-!27!         WRITE(35,*)'%meshplot = off'
-!27!         WRITE(35,*)'%contstyle=2'
-!27!         WRITE(35,*)'%xmin =', xi,' xmax=', xi+xl
-!27!         WRITE(35,*)'%ymin =', zi,' ymax=', zi+zl
-!27!         WRITE(35,*)'%nx =  ',nx
-!27!         WRITE(35,*)'%ny =  ',nz
-!27!         WRITE(35,*)'%nsteps =',50
-!27!         
-!27!         do k=1,nz
-!27!            do j=ny/2,ny/2
-!27!               do i=1,nx
-!27!                  write(35,*) PR1(k,j,i)
-!27!               enddo
-!27!            enddo
-!27!         enddo
+         WRITE(35,*)'$DATA = CONTOUR'
+         WRITE(35,*)'%meshplot = off'
+         WRITE(35,*)'%contstyle=2'
+         WRITE(35,*)'%xmin =', xi,' xmax=', xi+xl
+         WRITE(35,*)'%ymin =', zi,' ymax=', zi+zl
+         WRITE(35,*)'%nx =  ',nx
+         WRITE(35,*)'%ny =  ',nz
+         WRITE(35,*)'%nsteps =',50
+         
+         do k=1,nz
+            do j=ny/2,ny/2
+               do i=1,nx
+                  write(35,*) PR1(k,j,i)
+               enddo
+            enddo
+         enddo
 c%%%%%%%%%%%%
          do kc=1,nz
             do jc=1,ny
@@ -876,7 +877,7 @@ c
       print*,'Prepare visualization''s files....'
       print*, ' '
 c     
-c      if (np.ne.0) call view_sphere (np,ncs,SS,ax,ay,az,nums)
+      if (np.ne.0) call view_sphere (np,ncs,SS,ax,ay,az,nums)
 !??????????
             call INTERPOL_S(np,ncs,nss,nx,ny,nz,nmx,nmy,nmz,hx,hy,hz,R,
      >             nrepS,num,nums,ax,ay,az,x,y,z,SS,pr1,PinterS)
