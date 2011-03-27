@@ -16,7 +16,7 @@ c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
 
 
 c Author : Mourad Ismail   (ismail@ujf-grenoble.fr)
-
+c $Id$
 C======================================================================C
       subroutine characteristics (nx,ny,nz,nmx,nmy,nmz,
      > V_x,V_y,V_z,xi,yi,zi,xl,yl,zl,hx,hy,hz,dt,x,y,z,num,U,U_conv)
