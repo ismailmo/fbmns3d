@@ -16,6 +16,7 @@ c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
 c
 c
 c Author : Mourad Ismail   (ismail@ujf-grenoble.fr)
+c $Id$
 
 *=======================================================================*
 	SUBROUTINE MSH_OMG (nx,ny,nz,hx,hy,hz,hv,
