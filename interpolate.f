@@ -15,6 +15,7 @@ c  You should have received a copy of the GNU General Public License
 c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
 
 c Author : Mourad Ismail   (ismail@ujf-grenoble.fr)
+c $Id$
 
 C--------------------------------------------------------------------C
 C--------------------------FUNCTIONS---------------------------------C
