@@ -16,6 +16,7 @@ c  along with Fbmns3d. If not, see <http://www.gnu.org/licenses/>.
 
 
 c Author : Mourad Ismail   (ismail@ujf-grenoble.fr)
+c $Id$
 C======================================================================
       SUBROUTINE INITIAL (nx,ny,nz,nmx,nmy,nmz,npt,
      >         R,x,y,z,DnV,DnV0,Uinter,U_n,V_X0,V_Y0,V_Z0,PR0)
