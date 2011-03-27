@@ -16,7 +16,7 @@
  *
  *Author : Pascal Havé   (have@ann.jussieu.fr)
  */
- 
+// $Id$ 
 /* ce petit bout code lié à une appli quelconque déclanchera un SIGFPE pour toutes opérations invalides 
  * suivant les critéres définis ci-dessous. (Surtout les NaN !!!)
  *
